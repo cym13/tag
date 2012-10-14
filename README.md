@@ -26,6 +26,16 @@ To install tag, just copy it into your PATH somewhere.
 Fore example you can copy the executable file named tag in your home, in the
 directory ~/bin and add `export PATH=~/bin:$PATH` in your ~/.bashrc.
 
+And to install the manpage in a location where man can find it, you can copy
+it in a man/man1 subdirectory of any part of your path (it works like this in
+my own system which is under ubuntu and I hope it will work as well on yours).
+
+    mkdir -p ~/bin/man/man1 && cp tag.1 ~/bin/man/man1/.
+
+To generate fresh documentation you can use pandoc:
+
+    pandoc -s -w man tag.1.md -o tag.1
+
 Rationale
 =========
 
