@@ -1,0 +1,142 @@
+.TH TAG 1 "2012-10-14" "Tag user manual"
+.SH NAME
+.PP
+tag - tag files.
+.SH SYNOPSIS
+.PP
+\f[B]tag\f[] [\f[B]-h\f[]] [\f[B]-a\f[] \f[I]TAG\f[]] [\f[B]-d\f[]
+\f[I]TAG\f[]] [\f[B]-n\f[]] [\f[B]-q\f[]] \f[I]FILE\f[]
+[\f[I]FILE\f[]]...
+.SH DESCRIPTION
+.PP
+Manages tags by filenames in the form:
+.PP
+\ \ \ \ \f[I]filename\f[] [\f[I]tag\f[], \f[I]tag_without_space\f[],
+\f[I]tag with spaces\f[]].\f[I]extension\f[]
+.PP
+Each operation on tags automatically normalize the filenames.
+.PP
+Beware that the space characters is sorted before alphanumerical
+characters.
+.PP
+Long options may take an `=\[aq] sign.
+.SH OPTIONS
+.TP
+.B \f[I]FILE\f[]
+file to rename according to tag operations
+.RS
+.RE
+.TP
+.B \f[B]-h\f[], \f[B]--help\f[]
+show usage and exit
+.RS
+.RE
+.TP
+.B \f[B]-a\f[] \f[I]TAG\f[], \f[B]--add\f[] \f[I]TAG\f[]
+append \f[I]TAG\f[] to filenames
+.RS
+.RE
+.TP
+.B \f[B]-d\f[] \f[I]TAG\f[], \f[B]--delete\f[] \f[I]TAG\f[]
+remove \f[I]TAG\f[] from filenames
+.RS
+.RE
+.TP
+.B \f[B]-n\f[], \f[B]--normalize\f[]
+rename files sorting tags and trimming spaces
+.RS
+.RE
+.TP
+.B \f[B]-q\f[], \f[B]--quiet\f[]
+print nothing on standard output
+.RS
+.RE
+.SH EXEMPLES
+.PP
+Add a tag to multiple files
+.PD 0
+.P
+.PD
+\ \ \f[B]tag -a unseen film1.mkv film2.mkv\f[]
+.PD 0
+.P
+.PD
+\ \ \ >> film1 [unseen].mkv
+.PD 0
+.P
+.PD
+\ \ \ >> film2 [unseen].mkv
+.PD 0
+.P
+.PD
+\ 
+.PD 0
+.P
+.PD
+\ \ \f[B]tag -a sametag,sametag "film1 [unseen].mkv"\f[]
+.PD 0
+.P
+.PD
+\ \ \ >> film1 [sametag, unseen].mkv
+.PD 0
+.P
+.PD
+\ 
+.PD 0
+.P
+.PD
+.PP
+Deletting two tags from a file
+.PD 0
+.P
+.PD
+\ \ \f[B]tag -d tag1,"tag 2" "file [tag 2, tag1, tag 3].ext"\f[]
+.PD 0
+.P
+.PD
+\ \ \ >> file [tag 3].ext
+.PD 0
+.P
+.PD
+\ 
+.PD 0
+.P
+.PD
+\ \ \f[B]tag -d "tag1, tag 2,tag 3" "file [tag 2, tag1, tag 3].ext"\f[]
+.PD 0
+.P
+.PD
+\ \ \ >> file.ext
+.PD 0
+.P
+.PD
+\ 
+.PD 0
+.P
+.PD
+Normalize a file
+.PD 0
+.P
+.PD
+\ \ \f[B]tag -n "a file [ d, b, e , b,,,,, c ] .ext"\f[]
+.PD 0
+.P
+.PD
+\ \ \ >> "a file [b, c, d, e].ext"
+.SH LICENSING
+.PP
+Tag was written by Calendros and is distributed under the GPLv3.
+.PD 0
+.P
+.PD
+See file \f[B]gpl-3.0.txt\f[] for the full license text.
+.SH REPORTING BUGS
+.PP
+For any bug, question or suggestion about Tag please don\[aq]t hesitate
+to send a mail to:
+.PD 0
+.P
+.PD
+\ \ \ \ \f[B]calendros-dev\f[] [at] \f[B]laposte\f[] [dot] \f[B]net\f[]
+.SH AUTHORS
+Written by Calendros, and Cédric Picard.
