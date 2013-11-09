@@ -69,6 +69,16 @@ def del_tag(filenames, tag):
         ret.append(((dirname, fn), (base, tags, ext)))
     return ret
 
+## @ return a list containing strings (filename:tag_list)
+# @param filenames list of complex type filenames
+def list_tags(filenames):
+    ret = []
+    for (dirname, fn), (base, tags, ext) in filenames:
+        for tag in tags:
+            if not tag in ret:
+                ret.append(tag)
+    return ret
+
 ## @return a plain filename from complex filename
 def apply_tag(complex_filename):
     newfilename = ''
@@ -530,6 +540,8 @@ if __name__ == '__main__':
             help = 'append tag to filenames')
     parser.add_argument('-d', '--delete', metavar = 'tag', action = 'append',
             help = 'remove tag from filenames')
+    parser.add_argument('-l', '--list', action = 'store_true',
+            help = 'list tags from filenames')
     parser.add_argument('-n', '--normalize', action = 'store_true',
             help = 'rename files sorting tags and trimming spaces')
     parser.add_argument('-q', '--quiet', action = 'store_true',
@@ -537,7 +549,8 @@ if __name__ == '__main__':
     #parser.add_argument('-t', '--testmode', action = 'store_true',
     #        help = 'for developers only')
     args = parser.parse_args()
-    if args.add is None and args.delete is None and not args.normalize:
+    if (args.add is None and args.delete is None
+                         and not args.normalize and not args.list) :
         parser.print_usage()
         print >> sys.stderr, 'error: no action to do'
         raise sys.exit(1)
@@ -552,6 +565,9 @@ if __name__ == '__main__':
             for tag2 in tag.split(','):
                 tag2 = tag2.strip()
                 filenames = del_tag(filenames, tag2)
+    if args.list:
+        print ' '.join(list_tags(filenames))
+        exit(0)
     #print str(filenames)
     errors = files_rename(filenames, args.quiet)
     if errors > 0:
