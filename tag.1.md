@@ -17,7 +17,7 @@ DESCRIPTION
 
 Manages tags by filenames in the form:
 
-\ \ \ \ *filename* [*tag*, *tag_without_space*, *tag with spaces*].*extension*
+\ \ \ \ *filename*[*tag*][*tag_without_space*][*tag with spaces*].*extension*
 
 Each operation on tags automatically normalize the filenames.
 
@@ -46,33 +46,36 @@ OPTIONS
 **-q**\, **--quiet**
 :    print nothing on standard output
 
+**-l**\, **--list**
+:    list tags from filenames
+
 
 EXEMPLES
 ========
 
 Add a tag to multiple files\
 \ \ **tag -a unseen film1.mkv film2.mkv** \
-\ \ \ >> film1 [unseen].mkv \
-\ \ \ >> film2 [unseen].mkv \
+\ \ \ >> film1[unseen].mkv \
+\ \ \ >> film2[unseen].mkv \
  \
 
-\ \ **tag -a sametag,sametag "film1 [unseen].mkv"** \
-\ \ \ >> film1 [sametag, unseen].mkv \
+\ \ **tag -a sametag,sametag "film1[unseen].mkv"** \
+\ \ \ >> film1[sametag][unseen].mkv \
  \
 
 
 Deletting two tags from a file\
-\ \ **tag -d tag1,"tag  2" "file [tag  2, tag1, tag 3].ext"**\
-\ \ \ >> file [tag 3].ext\
+\ \ **tag -d tag1,"tag  2" "file[tag  2][tag1][tag 3].ext"**\
+\ \ \ >> file[tag 3].ext\
  \
 
-\ \ **tag -d "tag1, tag  2,tag  3" "file [tag  2, tag1, tag 3].ext"**\
+\ \ **tag -d "tag1, tag  2,tag  3" "file[tag  2][tag1][tag 3].ext"**\
 \ \ \ >> file.ext\
  \
 
 Normalize a file\
-\ \ **tag -n "a file   [ d, b,  e  , b,,,,, c  ] .ext"**\
-\ \ \ >> "a file [b, c, d, e].ext"
+\ \ **tag -n "a file[ d][b][  e  ][ b][ c  ].ext"**\
+\ \ \ >> "a file[b, c, d, e].ext"
 
 LICENSING
 =========

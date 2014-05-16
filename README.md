@@ -3,7 +3,7 @@ Description
 
 Manages tags by filenames in the following form:
 
-    filename [tag, tag_without_space, tag with spaces].extension
+    filename[tag][tag_without_space][tag with spaces].extension
 
 Features
 ========
@@ -16,14 +16,15 @@ Features
 Dependencies
 ============
 
-All you need is a standart python installation.
+docopt     https://github.com/docopt/docopt or "pip install docopt"
 
 Installation
 ============
 
-To install tag, just copy it into your PATH somewhere.
+To install tag, just copy it into your PATH somewhere and make sure that
+docopt is installed as well.
 
-Fore example you can copy the executable file named tag in your home, in the
+For example you can copy the executable file named tag in your home, in the
 directory ~/bin and add `export PATH=~/bin:$PATH` in your ~/.bashrc.
 
 And to install the manpage in a location where man can find it, you can copy
@@ -50,6 +51,12 @@ Its command-line being allows the user to use Tag in scripts AND it respects
 the unix philosophy combining mulitple simple utilities doing no more than
 their job but doing it well.
 
+TODO
+====
+
+- Write unitests
+- Compile the man page
+
 License
 =======
 
@@ -57,13 +64,16 @@ GNU General Public License version 3 or later.
 
 Check `gpl-3.0.txt` for the full license text.
 
-Author
-======
+Authors
+=======
 
-Calendros.
+Calendros
+Rewritten by Cédric Picard
 
 Feel free to ask any question or suggestion or just thanking to
-calendros-dev [at] laposte [dot] net.
+calendros-dev [at] laposte [dot] net
+or
+cedric.picard [at] efrei [dot] net
 
 Further reading
 ===============
