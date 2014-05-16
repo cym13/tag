@@ -22,7 +22,7 @@
 """
 Manage tags by filenames.
 
-Usage: tag [-h] [-a tag] [-d tag] [-l] [-n] [-q] FILE...
+Usage: tag [-h] [-a tag] [-d tag] [-l] [-n] FILE...
 
 Arguments:
   file                  file to rename according to tag operations
@@ -33,7 +33,6 @@ Options:
   -d --delete tag       remove tag from filenames
   -l, --list            list tags from filenames
   -n, --normalize       rename files sorting tags and trimming spaces
-  -q, --quiet           print nothing to the standart output
 """
 
 import sys
@@ -115,9 +114,6 @@ def bsplit(string):
 
 def main():
     args = docopt(__doc__)
-
-    if args["--quiet"]:
-        sys.stdout = open("/dev/null")
 
     for fn in args["FILE"]:
         if args["--add"]:

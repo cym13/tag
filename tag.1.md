@@ -10,7 +10,7 @@ tag - tag files.
 SYNOPSIS
 ========
 
-**tag** [**-h**] [**-a** *TAG*] [**-d** *TAG*] [**-n**] [**-q**] *FILE* [*FILE*]...
+**tag** [**-h**] [**-a** *TAG*] [**-d** *TAG*] [**-n**] *FILE* [*FILE*]...
 
 DESCRIPTION
 ===========
@@ -42,9 +42,6 @@ OPTIONS
 
 **-n**\, **--normalize**
 :    rename files sorting tags and trimming spaces
-
-**-q**\, **--quiet**
-:    print nothing on standard output
 
 **-l**\, **--list**
 :    list tags from filenames
