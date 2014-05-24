@@ -35,11 +35,8 @@ Options:
   -n, --normalize       rename files sorting tags and trimming spaces
 """
 
-import sys
 import os
-import re
 from docopt import docopt
-from functools import partial
 
 
 def tags(filename):
@@ -131,6 +128,7 @@ def main():
         elif args["--normalize"]:
             new_fn = normalize(new_fn)
 
+        new_fn = new_fn.strip()
         os.rename(fn, new_fn)
 
 
@@ -138,4 +136,4 @@ if __name__ == "__main__":
     try:
         main()
     except (FileNotFoundError, PermissionError) as e:
-        sys.exit(e)
+        os.sys.exit(e)
