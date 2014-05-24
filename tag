@@ -116,25 +116,22 @@ def main():
     args = docopt(__doc__)
 
     for fn in args["FILE"]:
-        if args["--add"]:
+        new_fn = fn
+        if args["--list"]:
+            print('\n'.join(tags(fn)))
+
+        elif args["--add"]:
             for tag in args["--add"].split(","):
-                new_fn = add(fn, tag)
-                os.rename(fn, new_fn)
-                fn = new_fn
+                new_fn = add(new_fn, tag)
 
         elif args["--delete"]:
             for tag in args["--delete"].split(","):
-                new_fn = delete(fn, tag)
-                os.rename(fn, new_fn)
-                fn = new_fn
+                new_fn = delete(new_fn, tag)
 
         elif args["--normalize"]:
-            new_fn = normalize(fn)
-            os.rename(fn, new_fn)
-            fn = new_fn
+            new_fn = normalize(new_fn)
 
-        elif args["--list"]:
-            print('\n'.join(tags(fn)))
+        os.rename(fn, new_fn)
 
 
 if __name__ == "__main__":
