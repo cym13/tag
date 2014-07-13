@@ -101,6 +101,9 @@ def bsplit(string):
     Returns a list.
     """
     result = []
+    if string.startswith("["):
+        result.append("")
+
     for opb in string.split("["):
         for clb in opb.split("]"):
             if clb != "":
